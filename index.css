@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  background: #050505;
+}
+
+body {
+  margin: 0;
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+section[id] {
+  scroll-margin-top: 3rem;
+}
+
+:focus-visible {
+  outline: 2px solid #8ab4ff;
+  outline-offset: 3px;
+}
+
+/* One orchestrated moment: the name rising on load */
+.rise {
+  animation: rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes rise {
+  from { transform: translateY(105%); }
+}
+
+/* Continuous ticker */
+.marquee {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .marquee { animation: none; }
+}
